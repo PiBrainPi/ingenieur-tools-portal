@@ -4,44 +4,179 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ingenieur-Tools – Fabian Bussenius</title>
+<meta name="description" content="Ingenieurwerkzeuge und Fachbeiträge von Fabian Bussenius – PV & Wind Karte (MaStR) und weitere Tools.">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background:#f8fafc; color:#1e293b; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; }
-.container { max-width:600px; text-align:center; width:100%; }
-h1 { font-size:2rem; margin-bottom:8px; }
-.sub { color:#64748b; margin-bottom:32px; }
-.card { background:#fff; border-radius:16px; padding:24px; box-shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
-  text-align:left; display:flex; align-items:center; gap:16px; transition:box-shadow .2s; cursor:pointer; }
-.card:hover { box-shadow:0 4px 12px rgba(0,0,0,.12); }
-.card .icon { font-size:2rem; flex-shrink:0; }
-.card h3 { font-size:1.1rem; }
-.card p { font-size:.9rem; color:#64748b; }
-.footer { margin-top:48px; font-size:.8rem; color:#94a3b8; }
-.footer a { color:#64748b; text-decoration:none; }
-.footer a:hover { text-decoration:underline; }
-a { text-decoration:none; color:inherit; }
+:root{
+  --bg:#0b0f14; --bg2:#10161d; --card:#151c25; --card-hover:#1a2230;
+  --border:#232d3a; --text:#e5e9ef; --muted:#8a94a3; --accent:#5b9bd5; --accent2:#4a7fb0;
+  --radius:14px; --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(11,15,20,.82);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{font-size:1.05rem;font-weight:600;letter-spacing:.02em;color:var(--text);}
+.brand span{color:var(--accent);}
+.nav-links{display:flex;align-items:center;gap:28px;}
+.nav-links a{color:var(--muted);font-size:.92rem;transition:color .18s;}
+.nav-links a:hover{color:var(--text);}
+.nav-links .cta{color:var(--accent);border:1px solid var(--accent);padding:7px 16px;border-radius:8px;
+  font-weight:500;transition:all .18s;}
+.nav-links .cta:hover{background:rgba(91,155,213,.12);}
+
+/* Hero */
+.hero{padding:96px 0 64px;text-align:center;max-width:760px;margin:0 auto;}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);border:1px solid #2a3646;padding:5px 14px;border-radius:50px;margin-bottom:22px;}
+.hero h1{font-size:2.6rem;font-weight:650;letter-spacing:-.01em;line-height:1.12;margin-bottom:18px;}
+.hero h1 .accent{background:linear-gradient(90deg,var(--accent),#7fb3e6);-webkit-background-clip:text;
+  background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:var(--muted);font-size:1.08rem;max-width:600px;margin:0 auto 30px;}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:.95rem;font-weight:550;padding:12px 24px;
+  border-radius:10px;transition:all .18s;cursor:pointer;}
+.btn-primary{background:var(--accent);color:#08121c;}
+.btn-primary:hover{background:#6ea8de;}
+.btn-ghost{border:1px solid var(--border);color:var(--text);}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+/* Sektionen */
+section{padding:56px 0;}
+.section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:30px;border-bottom:1px solid var(--border);padding-bottom:14px;}
+.section-head h2{font-size:1.3rem;font-weight:600;}
+.section-head .tag{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+
+/* Karten-Raster (Tools + Artikel) */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px;}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:26px;
+  display:flex;flex-direction:column;gap:14px;transition:all .2s;position:relative;overflow:hidden;}
+.tool-card:hover{background:var(--card-hover);border-color:#33445c;transform:translateY(-3px);}
+.tool-card .icon{width:44px;height:44px;border-radius:11px;background:#1c2633;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;color:var(--accent);border:1px solid #2a3646;flex-shrink:0;}
+.tool-card .name{font-size:1.12rem;font-weight:600;}
+.tool-card .desc{color:var(--muted);font-size:.92rem;flex:1;}
+.tool-card .meta{font-size:.8rem;color:#5f6b7a;border-top:1px solid var(--border);padding-top:12px;}
+.tool-card .arrow{position:absolute;top:24px;right:26px;color:#44505e;font-size:1.1rem;transition:all .2s;}
+.tool-card:hover .arrow{color:var(--accent);transform:translateX(3px);}
+.badge{display:inline-block;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 9px;border-radius:6px;background:#1a2430;color:#8f9cb0;border:1px solid #2a3646;}
+.badge.coming{color:#7a8698;background:#161d27;}
+.card-placeholder{opacity:.55;pointer-events:none;background:var(--card);border:1px dashed var(--border);
+  border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:14px;}
+.card-placeholder .icon{width:44px;height:44px;border-radius:11px;background:#1c2633;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;color:#5a6675;border:1px dashed #2a3646;}
+
+/* Artikel-Platzhalter-Hinweis */
+.articles-note{background:var(--card);border:1px dashed var(--border);border-radius:var(--radius);
+  padding:26px;color:var(--muted);font-size:.92rem;}
+
+/* Footer */
+footer{border-top:1px solid var(--border);margin-top:40px;}
+.footer-inner{max-width:var(--maxw);margin:0 auto;padding:36px 28px;display:flex;justify-content:space-between;
+  align-items:flex-start;gap:24px;flex-wrap:wrap;}
+.footer-brand{font-size:.95rem;font-weight:600;}
+.footer-brand span{color:var(--accent);}
+.footer-col p,.footer-col a{color:var(--muted);font-size:.85rem;display:block;margin:4px 0;transition:color .15s;}
+.footer-col a:hover{color:var(--text);}
+.footer-bottom{max-width:var(--maxw);margin:0 auto;padding:18px 28px 30px;border-top:1px solid #121920;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;color:#5f6b7a;font-size:.78rem;}
+
+@media(max-width:640px){
+  .hero{padding:64px 0 40px;}
+  .hero h1{font-size:1.9rem;}
+  .nav-links .cta{display:none;}
+  .footer-inner{flex-direction:column;}
+}
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>📐 Ingenieur-Tools</h1>
-  <p class="sub">Ingenieurswerkzeuge für den täglichen Bedarf · Fabian Bussenius</p>
-  <a href="https://wind-pv-map.ingenieur-tools.de/" target="_blank">
-    <div class="card">
-      <div class="icon">🗺️</div>
-      <div>
-        <h3>PV &amp; Wind Karte (MaStR)</h3>
-        <p>Interaktive Karte aller deutschen Wind- (≥100 kW) und PV-Anlagen (≥0,5 MWp)<br>
-        basierend auf dem Marktstammdatenregister der Bundesnetzagentur.<br>
-        <strong>→ Jetzt erkunden</strong></p>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="brand">Ingenieur<span>·</span>Tools</a>
+    <nav class="nav-links">
+      <a href="#tools">Tools</a>
+      <a href="#artikel">Artikel</a>
+      <a href="https://www.linkedin.com/in/fabian-bussenius-3007b0131" target="_blank" rel="noopener" class="cta">LinkedIn</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Ingenieurwerkzeuge · Fachbeiträge</span>
+      <h1>Professionelle Werkzeuge für den <span class="accent">Ingenieuralltag</span></h1>
+      <p>Praxisnahe Tools und gebündeltes Fachwissen von Fabian Bussenius –
+      sorgfältig aufbereitet, datenschutzkonform und kostenlos nutzbar.</p>
+      <div class="hero-cta">
+        <a href="#tools" class="btn btn-primary">Tools entdecken</a>
+        <a href="https://www.linkedin.com/in/fabian-bussenius-3007b0131" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn-Profil</a>
       </div>
     </div>
-  </a>
-  <div class="footer">
-    <p>Fabian Bussenius · 2026&nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="impressum.html">Impressum</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="datenschutz.html">Datenschutz</a></p>
+  </section>
+
+  <section id="tools">
+    <div class="container">
+      <div class="section-head"><h2>Tools</h2><span class="tag">Ingenieurswerkzeuge</span></div>
+      <div class="grid">
+        <a href="https://wind-pv-map.ingenieur-tools.de/" target="_blank" rel="noopener" class="tool-card">
+          <span class="arrow">→</span>
+          <div class="icon">◈</div>
+          <div class="name">PV &amp; Wind Karte</div>
+          <div class="desc">Interaktive Karte aller deutschen Wind- (≥100 kW) und Photovoltaik-Anlagen (≥0,5 MWp)
+          auf Basis des Marktstammdatenregisters der Bundesnetzagentur.</div>
+          <div class="meta">Datenstand: Bundesnetzagentur · MaStR · Datenlizenz Deutschland</div>
+        </a>
+        <div class="card-placeholder">
+          <div class="icon">◇</div>
+          <div class="name">Weitere Tools in Vorbereitung</div>
+          <div class="desc">Dieser Bereich wird schrittweise mit weiteren Ingenieurswerkzeugen gefüllt.</div>
+          <div class="meta"><span class="badge coming">Bald verfügbar</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="artikel">
+    <div class="container">
+      <div class="section-head"><h2>Artikel</h2><span class="tag">Fachbeiträge</span></div>
+      <div class="articles-note">Noch keine Artikel verfügbar. Fachbeiträge zu Energie- und Ingenieursthemen
+      werden hier in Kürze veröffentlicht.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Ingenieur<span>·</span>Tools</div>
+      <p style="color:#5f6b7a;font-size:.82rem;margin-top:6px;">Von Fabian Bussenius · Deutschland</p>
+    </div>
+    <div class="footer-col">
+      <div style="font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Navigation</div>
+      <a href="#tools">Tools</a>
+      <a href="#artikel">Artikel</a>
+    </div>
+    <div class="footer-col">
+      <div style="font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px;">Kontakt &amp; Recht</div>
+      <a href="https://www.linkedin.com/in/fabian-bussenius-3007b0131" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
   </div>
-</div>
+  <div class="footer-bottom">
+    <span>© 2026 Fabian Bussenius. Alle Rechte vorbehalten.</span>
+    <span>Ingenieur-Tools</span>
+  </div>
+</footer>
+
 </body>
 </html>
