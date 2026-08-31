@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Ingenieur-Tools · Fabian Bussenius (2026-08-31)
+# Kein Sitemap-Zwang für diese kleine, statische Seite.
