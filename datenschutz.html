@@ -48,7 +48,7 @@ header .brand span{color:var(--accent);}
 <div class="container">
   <a class="back" href="index.html">← Zurück zur Startseite</a>
   <h1>Datenschutzerklärung</h1>
-  <p class="lead">für alle Angebote unter ingenieur-tools.de · <span class="stand">Stand: 31.08.2026</span></p>
+  <p class="lead">für alle Angebote unter ingenieur-tools.de · <span class="stand">Stand: 20.09.2026</span></p>
 
   <div class="hr"></div>
 
@@ -76,21 +76,30 @@ header .brand span{color:var(--accent);}
   <p>Es werden <strong>keine Analyse-Cookies, kein Tracking und keine Webanalyse-Dienste</strong>
   (z.&nbsp;B. Google Analytics) sowie kein Newsletter und keine Benutzerkonten eingesetzt.</p>
 
-  <h2>3. Hosting (GitHub Pages)</h2>
-  <p>Dieses Angebot wird über den Hosting-Anbieter
-  <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub Inc.</a> (GitHub Pages)
-  bereitgestellt. GitHub Inc. hat seinen Hauptsitz in den USA; die Auslieferung erfolgt über
-  Content-Delivery-Netzwerke (u.&nbsp;a. Fastly). Beim Aufruf der Website verarbeitet der
-  Hosting-Anbieter technisch notwendige <strong>Server-Logdaten</strong> (insbesondere IP-Adresse,
-  Datum/Uhrzeit, aufgerufene Ressource, User-Agent).</p>
+  <h2>3. Hosting (Vercel)</h2>
+  <p>Alle Angebote dieses Portals — die <strong>PV-&amp;-Wind-Karte</strong> (<code>wind-pv-map.de</code>),
+  das <strong>Portal</strong> (<code>ingenieur-tools.de</code>), der <strong>Sun Tracker</strong>
+  (<code>sonne.ingenieur-tools.de</code>) und das <strong>Galton Board</strong>
+  (<code>galton-board.ingenieur-tools.de</code>) — werden über den Host
+  <a href="https://vercel.com" target="_blank" rel="noopener noreferrer">Vercel Inc.</a>
+  (440 N Barranca Ave #4133, Covina, CA 91723, USA) bereitgestellt; die Auslieferung erfolgt über
+  das globale Vercel-Edge-Netzwerk (für Besucher aus Deutschland u.&nbsp;a. Region Frankfurt am Main).
+  Beim Aufruf verarbeitet der Hosting-Anbieter technisch notwendige
+  <strong>Server-Logdaten</strong> (insbesondere IP-Adresse, Datum/Uhrzeit, aufgerufene Ressource,
+  User-Agent, sowie aus der IP abgeleitete Standortdaten auf Stadt-/Länderebene).</p>
   <p>Die Verarbeitung erfolgt auf Grundlage unseres berechtigten Interesses an einem sicheren,
-  funktionierenden und analysierbaren Betrieb der Website (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO).
-  Die <strong>Übermittlung in die USA</strong> stützt sich auf die Teilnahme von GitHub am
-  <strong>EU-US Data Privacy Framework (DPF)</strong> (Art.&nbsp;45 DSGVO). Informationen:
-  <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener noreferrer">DPF-Liste</a>
-  und <a href="https://docs.github.com/de/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener noreferrer">
-  GitHub-Datenschutzerklärung</a>. Die konkrete Speicherdauer der Server-Logs legt ausschließlich
-  GitHub fest; wir übernehmen keine technische Speicherung.</p>
+  funktionierenden Betrieb der Website (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO).
+  Die <strong>Übermittlung in die USA</strong> stützt sich auf die Teilnahme von Vercel am
+  <strong>EU-US Data Privacy Framework (DPF)</strong> (Art.&nbsp;45 DSGVO; seit 04.06.2024, inkl. UK- und
+  Schweiz-Erweiterung). Informationen:
+  <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener noreferrer">DPF-Liste</a> und
+  <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Vercel-Datenschutzhinweise</a>.
+  Vercel betreibt seine Infrastruktur u.&nbsp;a. bei AWS, Microsoft Azure und Google Cloud
+  (<a href="https://security.vercel.com" target="_blank" rel="noopener noreferrer">Subprozessor-Liste</a>).
+  Für den genutzten kostenlosen Vercel-Tarif („Hobby“) besteht kein separater Vertrag zur
+  Auftragsverarbeitung (Art.&nbsp;28 DSGVO); Vercel verarbeitet die Logdaten als eigenständiger
+  Verantwortlicher. Die konkrete Speicherdauer der Server-Logs legt der Anbieter fest; wir übernehmen
+  keine technische Speicherung und nutzen keine Vercel-Web-Analytics.</p>
 
   <h2>4. Drittland-Übermittlungen</h2>
   <p>Im Rahmen des Betriebs können personenbezogene Daten in Drittländer übermittelt werden.
@@ -98,9 +107,10 @@ header .brand span{color:var(--accent);}
   <table>
     <tr><th>Empfänger</th><th>Zweck</th><th>Daten</th><th>Land</th><th>Rechtsgrundlage</th></tr>
     <tr>
-      <td>GitHub Inc. (GitHub Pages)</td><td>Hosting, Server-Logs</td>
-      <td>IP, Zeitpunkt, aufgerufene Ressource, User-Agent</td><td>USA</td>
-      <td>Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO; DPF-Zertifizierung</td>
+      <td>Vercel Inc. (Hosting aller vier Angebote: Karte, Portal, Sun Tracker, Galton Board)</td>
+      <td>Hosting, Server-Logs, Edge-CDN</td>
+      <td>IP (u.&nbsp;a. abgeleiteter Standort auf Stadt-/Länderebene), Zeitpunkt, aufgerufene Ressource, User-Agent</td><td>USA</td>
+      <td>Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO; DPF-Zertifizierung (seit 04.06.2024)</td>
     </tr>
     <tr>
       <td>OpenStreetMap Foundation (OSMF)</td><td>Kartenkacheln (nur an der PV-&-Wind-Karte, nach Klick)</td>
@@ -117,14 +127,19 @@ header .brand span{color:var(--accent);}
   Angemessenheitsbeschluss der EU-Kommission (zuletzt 2025 bis 27.12.2031 erneuert).</p>
 
   <h2>5. Externe Dienste je Anwendung</h2>
-  <h3>5.1 PV-&amp;-Wind-Karte (wind-pv-map.ingenieur-tools.de)</h3>
+  <h3>5.1 PV-&amp;-Wind-Karte (wind-pv-map.de)</h3>
   <ul>
+    <li><strong>Hosting:</strong> über Vercel Inc. (USA; DPF-zertifiziert, siehe § 3 und § 4).
+    Inhalte werden über das Vercel-Edge-Netzwerk ausgeliefert (u.&nbsp;a. Region Frankfurt am Main).</li>
     <li><strong>Kartenbibliotheken</strong> (Leaflet, MarkerCluster) werden direkt von diesem Angebot
     ausgeliefert und eingebettet — keine Übermittlung an Dritte.</li>
     <li><strong>Kartenkacheln von OpenStreetMap</strong> werden erst nach Ihrer Einwilligung geladen
     (2-Klick-Prinzip). Dabei werden IP-Adresse und der aufgerufene Kartenausschnitt an die
     OpenStreetMap Foundation (UK) übertragen. Rechtsgrundlage: Einwilligung (Art. 6 Abs. 1 lit. a
     DSGVO, § 25 Abs. 1 TDDDG). </li>
+    <li><strong>Lokale Einstellungen</strong> (localStorage, technisch erforderlich, § 25 Abs. 2 Nr. 2
+    TDDDG): <code>pvw_tiles_consent</code> (Kachel-Freigabe), <code>pvw_nap_groups</code>
+    (NAP-Gruppenansicht), <code>pvw_toolbar_hidden</code> (mobil Filterleiste).</li>
     <li><strong>Externe Deeplinks</strong> beim Klick auf „Koordinaten“ (Google Maps, Google LLC, USA –
     DPF-Zertifiziert) und „Betreiber“ (NorthData, North Data GmbH, DE). Für die geöffneten Seiten gilt
     die Datenschutzerklärung des jeweiligen Anbieters.</li>
@@ -185,7 +200,7 @@ header .brand span{color:var(--accent);}
 
   <h2>10. Aktualität</h2>
   <p>Wir können diese Datenschutzerklärung anpassen, wenn sich rechtliche oder technische Gegebenheiten
-  ändern. Die jeweils aktuelle Fassung finden Sie auf dieser Seite. Stand: 31.08.2026.</p>
+  ändern. Die jeweils aktuelle Fassung finden Sie auf dieser Seite. Stand: 20.09.2026.</p>
 
   <p class="footer">© 2026 Fabian Bussenius · Ingenieur-Tools · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
 </div>
