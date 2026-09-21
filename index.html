@@ -189,5 +189,55 @@ footer{border-top:1px solid var(--border);margin-top:40px;}
   </div>
 </footer>
 
+<!-- V54: Optionale Besuchsstatistik (Vercel Web Analytics) — nur nach Einwilligung (Art. 6 lit. a + Art. 49 lit. a DSGVO) -->
+<div id="va-consent" style="display:none;max-width:var(--maxw);margin:0 auto;padding:0 28px 24px;">
+  <div style="border:1px solid var(--border);border-radius:12px;background:#0d1319;padding:14px 18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;">
+    <span style="font-size:.85rem;color:var(--muted);">Helfen Sie uns, dieses Angebot zu verbessern — mit einer anonymisierten Besuchsstatistik (optional, keine Cookies). Details: <a href="datenschutz.html" style="color:var(--accent);">Datenschutzerklärung § 5.0</a>.</span>
+    <span style="display:flex;gap:8px;">
+      <button type="button" id="va-decline" style="padding:7px 14px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.85rem;cursor:pointer;">Nein danke</button>
+      <button type="button" id="va-accept" style="padding:7px 14px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;font-size:.85rem;font-weight:550;cursor:pointer;">Anonyme Statistik erlauben</button>
+    </span>
+  </div>
+</div>
+
+<script>
+/* V54 — Vercel Web Analytics opt-in (NUR nach Klick; kein Request vor Einwilligung). */
+(function () {
+  'use strict';
+  var KEY = 'pvw_analytics_consent';
+  var box = document.getElementById('va-consent');
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+
+  function injectAnalytics() {
+    if (document.head.querySelector('script[src*="/_vercel/insights/script.js"]')) return;
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = '/_vercel/insights/script.js';
+    s.onerror = function () { /* Analytics noch nicht aktiviert — still ignorieren */ };
+    document.head.appendChild(s);
+  }
+
+  if (saved === 'yes') {
+    injectAnalytics();
+  } else if (saved === null) {
+    if (box) box.style.display = 'block';
+  }
+
+  var ok = document.getElementById('va-accept');
+  if (ok) ok.addEventListener('click', function () {
+    try { localStorage.setItem(KEY, 'yes'); } catch (e) {}
+    if (box) box.style.display = 'none';
+    injectAnalytics();
+  });
+  var declineBtn = document.getElementById('va-decline');
+  if (declineBtn) declineBtn.addEventListener('click', function () {
+    try { localStorage.setItem(KEY, 'no'); } catch (e) {}
+    if (box) box.style.display = 'none';
+  });
+})();
+</script>
+
 </body>
 </html>
